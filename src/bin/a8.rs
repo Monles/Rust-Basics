@@ -1,43 +1,27 @@
-// Topic: Organizing similar data using structs
-//
-// Requirements:
-// * Print the flavor of a drink and it's fluid ounces
-//
-// Notes:
-// * Use an enum to create different flavors of drinks
-// * Use a struct to store drink flavor and fluid ounce information
-// * Use a function to print out the drink flavor and ounces
-// * Use a match expression to print the drink flavor
-
-enum Flavor {
-    Sparkling,
+enum Flavour {
     Sweet,
+    Sparkling,
     Fruity,
 }
 
 struct Drink {
-    flavor: Flavor,
+    flavour: Flavour,
     fluid_oz: f64,
 }
-fn print_drink(drink: Drink) {
-    match drink.flavor {
-        Flavor::Sparkling => println!("flavor: sparkling"),
-        Flavor::Sweet => println!("flavor: sweet"),
-        Flavor::Fruity => println!("flavor: fruity"),
+
+fn print_drinks(the_drink: Drink) {
+    match the_drink.flavour {
+        Flavour::Sweet => println!("Sweet Drink!"),
+        Flavour::Sparkling => println!("Sparkling Drink!"),
+        Flavour::Fruity => println!("Fruity Drink!"),
     }
-    println!("oz: {:?}", drink.fluid_oz);
+    println!("Oz: {:?}", the_drink.fluid_oz);
 }
 
 fn main() {
-    let sweet = Drink {
-        flavor: Flavor::Sweet,
-        fluid_oz: 6.0,
+    let a: Drink = Drink {
+        flavour: Flavour::Sparkling,
+        fluid_oz: 10.5,
     };
-    print_drink(sweet);
-
-    let fruity = Drink {
-        flavor: Flavor::Fruity,
-        fluid_oz: 10.0,
-    };
-    print_drink(fruity);
+    print_drinks(a);
 }
