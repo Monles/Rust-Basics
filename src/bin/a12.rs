@@ -1,25 +1,13 @@
-// Topic: Implementing functionality with the impl keyword
-//
-// Requirements:
-// * Print the characteristics of a shipping box
-// * Must include dimensions, weight, and color
-//
-// Notes:
-// * Use a struct to encapsulate the box characteristics
-// * Use an enum for the box color
-// * Implement functionality on the box struct to create a new box
-// * Implement functionality on the box struct to print the characteristics
-
-enum Color {
+enum Colour {
     Brown,
     Red,
 }
 
-impl Color {
+impl Colour {
     fn print(&self) {
         match self {
-            Color::Brown => println!("brown"),
-            Color::Red => println!("red"),
+            Colour::Brown => println!("Brown"),
+            Colour::Red => println!("Red"),
         }
     }
 }
@@ -39,33 +27,33 @@ impl Dimensions {
 }
 
 struct ShippingBox {
-    color: Color,
+    colour: Colour,
     weight: f64,
     dimensions: Dimensions,
 }
 
 impl ShippingBox {
-    fn new(weight: f64, color: Color, dimensions: Dimensions) -> Self {
+    fn new(weight: f64, colour: Colour, dimensions: Dimensions) -> Self {
         Self {
+            colour,
             weight,
-            color,
             dimensions,
         }
     }
 
     fn print(&self) {
-        self.color.print();
+        self.colour.print();
         self.dimensions.print();
-        println!("weight: {:?}", self.weight);
+        println!("weight: {:?}", self.weight)
     }
 }
 
 fn main() {
-    let small_dimensions = Dimensions {
+    let small_dimensions: Dimensions = Dimensions {
         width: 1.0,
         height: 2.0,
         depth: 3.0,
     };
-    let small_box = ShippingBox::new(5.0, Color::Red, small_dimensions);
+    let small_box: ShippingBox = ShippingBox::new(5.0, Colour::Red, small_dimensions);
     small_box.print();
 }
